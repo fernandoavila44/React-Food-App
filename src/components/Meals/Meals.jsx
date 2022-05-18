@@ -1,3 +1,4 @@
+import React from 'react';
 import AvailablesMeals from './AvialablesMeals';
 import MealsSummary from './MealsSummary';
 

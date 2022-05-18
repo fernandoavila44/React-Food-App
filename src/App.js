@@ -9,10 +9,7 @@ const App = () => {
 	const [modalShow, setModalShow] = useState(false);
 
 	const handlePressed = () =>{
-		if(modalShow === false)
-		setModalShow(true)
-		else
-		setModalShow(false)
+		setModalShow(prevValue => !prevValue)
 	}
 
 	return (

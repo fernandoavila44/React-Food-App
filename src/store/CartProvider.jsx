@@ -23,13 +23,11 @@ const cartReducer = (state, action) => {
                 ...existingCartItem,
                 amount: existingCartItem.amount + action.item.amount,
             };
-            console.log(updatedItem)
             updatedItems = [...state.items];
             updatedItems[existingCartItemIndex] = updatedItem;
         } else {
             updatedItems = state.items.concat(action.item);
         }
-        console.log(updatedItems, updatedTotalAmount)
         return {
             items: updatedItems,
             totalAmount: updatedTotalAmount,
@@ -61,6 +59,10 @@ const cartReducer = (state, action) => {
         };
     }
 
+    if(action.type = 'CLEAR'){
+        return defaultCartState;
+    }
+
 
     return defaultCartState;
 };
@@ -78,11 +80,16 @@ const CartProvider = props => {
         dispatchCartAction({ type: 'DEL', id: id });
     };
 
+    const clearCart = () =>{
+        dispatchCartAction({ type: 'CLEAR'})
+    }
+
     const cartContext = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addItemToCart,
-        removeItem: deleteItemFromCart
+        removeItem: deleteItemFromCart,
+        clearCart: clearCart
     }
 
 
